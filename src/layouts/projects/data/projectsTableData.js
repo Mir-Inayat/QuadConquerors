@@ -1,24 +1,5 @@
-/*!
-
-=========================================================
-* Vision UI Free React - v1.0.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/vision-ui-free-react
-* Copyright 2021 Creative Tim (https://www.creative-tim.com/)
-* Licensed under MIT (https://github.com/creativetimofficial/vision-ui-free-react/blob/master LICENSE.md)
-
-* Design and Coded by Simmmple & Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
-
-/* eslint-disable react/prop-types */
-// @mui material components
 import Icon from "@mui/material/Icon";
+import Button from "@mui/material/Button"; // Add button from MUI
 
 // Vision UI Dashboard React components
 import VuiBox from "components/VuiBox";
@@ -32,12 +13,6 @@ import Slack from "examples/Icons/Slack";
 import Spotify from "examples/Icons/Spotify";
 import Jira from "examples/Icons/Jira";
 import Invision from "examples/Icons/Invision";
-import logoSpotify from "assets/images/small-logos/logo-spotify.svg";
-import logoInvesion from "assets/images/small-logos/logo-invision.svg";
-import logoJira from "assets/images/small-logos/logo-jira.svg";
-import logoSlack from "assets/images/small-logos/logo-slack.svg";
-import logoWebDev from "assets/images/small-logos/logo-webdev.svg";
-import logoXD from "assets/images/small-logos/logo-xd.svg";
 
 function Completion({ value, color }) {
   return (
@@ -52,19 +27,14 @@ function Completion({ value, color }) {
   );
 }
 
-const action = (
-  <Icon sx={{ cursor: "pointer", fontWeight: "bold" }} fontSize="small">
-    more_vert
-  </Icon>
-);
-
 export default {
   columns: [
     { name: "project", align: "left" },
+    { name: "organization", align: "left" }, // Added organization column
     { name: "budget", align: "left" },
     { name: "status", align: "left" },
     { name: "completion", align: "center" },
-    { name: "action", align: "center" },
+    { name: "action", align: "center" }, // This will have a Volunteer button
   ],
 
   rows: [
@@ -77,6 +47,11 @@ export default {
           </VuiTypography>
         </VuiBox>
       ),
+      organization: (
+        <VuiTypography variant="button" color="white" fontWeight="medium">
+          Adobe
+        </VuiTypography>
+      ),
       budget: (
         <VuiTypography variant="button" color="white" fontWeight="medium">
           $14,000
@@ -88,7 +63,11 @@ export default {
         </VuiTypography>
       ),
       completion: <Completion value={60} color="info" />,
-      action,
+      action: (
+        <Button variant="contained" color="primary" size="small">
+          Volunteer
+        </Button>
+      ), // Added a Volunteer button
     },
     {
       project: (
@@ -98,6 +77,11 @@ export default {
             Add Progress Track
           </VuiTypography>
         </VuiBox>
+      ),
+      organization: (
+        <VuiTypography variant="button" color="white" fontWeight="medium">
+          Atlassian
+        </VuiTypography>
       ),
       budget: (
         <VuiTypography variant="button" color="white" fontWeight="medium">
@@ -110,7 +94,11 @@ export default {
         </VuiTypography>
       ),
       completion: <Completion value={100} color="info" />,
-      action,
+      action: (
+        <Button variant="contained" color="primary" size="small">
+          Volunteer
+        </Button>
+      ),
     },
     {
       project: (
@@ -120,6 +108,11 @@ export default {
             Fix Platform Errors
           </VuiTypography>
         </VuiBox>
+      ),
+      organization: (
+        <VuiTypography variant="button" color="white" fontWeight="medium">
+          Slack
+        </VuiTypography>
       ),
       budget: (
         <VuiTypography variant="button" color="white" fontWeight="medium">
@@ -132,7 +125,11 @@ export default {
         </VuiTypography>
       ),
       completion: <Completion value={30} color="info" />,
-      action,
+      action: (
+        <Button variant="contained" color="primary" size="small">
+          Volunteer
+        </Button>
+      ),
     },
     {
       project: (
@@ -142,6 +139,11 @@ export default {
             Launch our Mobile App
           </VuiTypography>
         </VuiBox>
+      ),
+      organization: (
+        <VuiTypography variant="button" color="white" fontWeight="medium">
+          Spotify
+        </VuiTypography>
       ),
       budget: (
         <VuiTypography variant="button" color="white" fontWeight="medium">
@@ -154,7 +156,11 @@ export default {
         </VuiTypography>
       ),
       completion: <Completion value={0} color="info" />,
-      action,
+      action: (
+        <Button variant="contained" color="primary" size="small">
+          Volunteer
+        </Button>
+      ),
     },
     {
       project: (
@@ -164,6 +170,11 @@ export default {
             Add the New Pricing Page
           </VuiTypography>
         </VuiBox>
+      ),
+      organization: (
+        <VuiTypography variant="button" color="white" fontWeight="medium">
+          Jira
+        </VuiTypography>
       ),
       budget: (
         <VuiTypography variant="button" color="white" fontWeight="medium">
@@ -176,7 +187,11 @@ export default {
         </VuiTypography>
       ),
       completion: <Completion value={100} color="info" />,
-      action,
+      action: (
+        <Button variant="contained" color="primary" size="small">
+          Volunteer
+        </Button>
+      ),
     },
   ],
 };
