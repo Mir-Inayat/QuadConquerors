@@ -205,7 +205,7 @@ function CoverLayout({
           >
             {children}
           </VuiBox>
-          <Footer />
+          
         </VuiBox>
       </VuiBox>
     </PageLayout>

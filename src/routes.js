@@ -40,7 +40,7 @@
 
 // Vision UI Dashboard React layouts
 import Dashboard from "layouts/dashboard";
-import Tables from "layouts/tables";
+import ProjectsDashboard from "layouts/projects";
 import Billing from "layouts/billing";
 import RTL from "layouts/rtl";
 import Profile from "layouts/profile";
@@ -68,11 +68,11 @@ const routes = [
   },
   {
     type: "collapse",
-    name: "Tables",
-    key: "tables",
-    route: "/tables",
+    name: "ProjectsDashboard",
+    key: "projectsdashboard",
+    route: "/projects",
     icon: <IoStatsChart size="15px" color="inherit" />,
-    component: Tables,
+    component: ProjectsDashboard,
     noCollapse: true,
   },
   {
