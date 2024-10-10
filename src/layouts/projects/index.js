@@ -30,10 +30,10 @@ import Footer from "examples/Footer";
 import Table from "examples/Tables/Table";
 
 // Data
-import authorsTableData from "layouts/tables/data/authorsTableData";
-import projectsTableData from "layouts/tables/data/projectsTableData";
+import authorsTableData from "layouts/projects/data/authorsTableData";
+import projectsTableData from "layouts/projects/data/projectsTableData";
 
-function Tables() {
+function ProjectsDashboard() {
   const { columns, rows } = authorsTableData;
   const { columns: prCols, rows: prRows } = projectsTableData;
 
@@ -90,9 +90,9 @@ function Tables() {
           </VuiBox>
         </Card>
       </VuiBox>
-      <Footer />
+
     </DashboardLayout>
   );
 }
 
-export default Tables;
+export default ProjectsDashboard;

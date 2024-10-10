@@ -209,7 +209,6 @@ function Overview() {
         </Grid>
       </Grid>
 
-      <Footer />
     </DashboardLayout>
   );
 }
