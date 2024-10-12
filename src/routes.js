@@ -46,6 +46,8 @@ import RTL from "layouts/rtl";
 import Profile from "layouts/profile";
 import SignIn from "layouts/authentication/sign-in";
 import SignUp from "layouts/authentication/sign-up";
+import VolunteerSignIn from "layouts/authentication/sign-in/VolunteerSignIn"
+import VolunteerSignUp from "layouts/authentication/sign-up/VolunteerSignUp"
 
 // Vision UI Dashboard React icons
 import { IoRocketSharp } from "react-icons/io5";
@@ -55,6 +57,8 @@ import { IoBuild } from "react-icons/io5";
 import { BsCreditCardFill } from "react-icons/bs";
 import { IoStatsChart } from "react-icons/io5";
 import { IoHome } from "react-icons/io5";
+import OrganizationSignIn from "layouts/authentication/sign-in/OrganizationSignIn";
+import OrganizationSignUp from "layouts/authentication/sign-up/OrgnizationSignUp";
 
 const routes = [
   {
@@ -121,6 +125,43 @@ const routes = [
     component: SignUp,
     noCollapse: true,
   },
+  {
+    type: "collapse",
+    name: "Volunteer Sign In",
+    key: "Volunteer-sign-in",
+    route: "/authentication/sign-in/VolunteerSignIn",
+    icon: <IoRocketSharp size="15px" color="inherit" />,
+    component: VolunteerSignIn,
+    noCollapse: true,
+  },
+  {
+    type: "collapse",
+    name: "Organization Sign In",
+    key: "Organization-sign-in",
+    route: "/authentication/sign-in/OrganizationSignIn",
+    icon: <IoRocketSharp size="15px" color="inherit" />,
+    component: OrganizationSignIn,
+    noCollapse: true,
+  },
+  {
+    type: "collapse",
+    name: "Volunteer Sign Up",
+    key: "Volunteer-sign-up",
+    route: "/authentication/sign-up/VolunteerSignUp",
+    icon: <IoRocketSharp size="15px" color="inherit" />,
+    component: VolunteerSignUp,
+    noCollapse: true,
+  },
+  {
+    type: "collapse",
+    name: "Organization Sign Up",
+    key: "Organization-sign-up",
+    route: "/authentication/sign-up/OrganizationSignUp",
+    icon: <IoRocketSharp size="15px" color="inherit" />,
+    component: OrganizationSignUp,
+    noCollapse: true
+  }
+  
 ];
 
 export default routes;
