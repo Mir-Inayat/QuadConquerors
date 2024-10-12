@@ -133,6 +133,7 @@ const routes = [
     icon: <IoRocketSharp size="15px" color="inherit" />,
     component: VolunteerSignIn,
     noCollapse: true,
+    isHidden: true // Add this flag
   },
   {
     type: "collapse",
@@ -142,6 +143,7 @@ const routes = [
     icon: <IoRocketSharp size="15px" color="inherit" />,
     component: OrganizationSignIn,
     noCollapse: true,
+    isHidden: true // Add this flag
   },
   {
     type: "collapse",
@@ -151,6 +153,7 @@ const routes = [
     icon: <IoRocketSharp size="15px" color="inherit" />,
     component: VolunteerSignUp,
     noCollapse: true,
+    isHidden: true // Add this flag
   },
   {
     type: "collapse",
@@ -159,7 +162,8 @@ const routes = [
     route: "/authentication/sign-up/OrganizationSignUp",
     icon: <IoRocketSharp size="15px" color="inherit" />,
     component: OrganizationSignUp,
-    noCollapse: true
+    noCollapse: true,
+    isHidden: true // Add this flag
   }
   
 ];
