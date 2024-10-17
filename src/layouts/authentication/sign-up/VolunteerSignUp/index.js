@@ -58,10 +58,8 @@ function SignIn() {
     <CoverLayout
       title="Welcome!"
       color="white"
-      description="Use these awesome forms to login or create new account in your project for free."
       image={bgSignIn}
-      premotto="INSPIRED BY THE FUTURE:"
-      motto="THE VISION UI DASHBOARD"
+
       cardContent
     >
       <GradientBorder borderRadius={borders.borderRadius.form} minWidth="100%" maxWidth="100%">
@@ -181,79 +179,490 @@ function SignIn() {
             or
           </VuiTypography>
           <VuiBox mb={2}>
-            <VuiBox mb={1} ml={0.5}>
-              <VuiTypography component="label" variant="button" color="white" fontWeight="medium">
-                Name
-              </VuiTypography>
-            </VuiBox>
-            <GradientBorder
-              minWidth="100%"
-              borderRadius={borders.borderRadius.lg}
-              padding="1px"
-              backgroundImage={radialGradient(
-                palette.gradients.borderLight.main,
-                palette.gradients.borderLight.state,
-                palette.gradients.borderLight.angle
-              )}
-            >
-              <VuiInput
-                placeholder="Your full name..."
-                sx={({ typography: { size } }) => ({
-                  fontSize: size.sm,
-                })}
-              />
-            </GradientBorder>
-          </VuiBox>
-          <VuiBox mb={2}>
-            <VuiBox mb={1} ml={0.5}>
-              <VuiTypography component="label" variant="button" color="white" fontWeight="medium">
-                Email
-              </VuiTypography>
-            </VuiBox>
-            <GradientBorder
-              minWidth="100%"
-              borderRadius={borders.borderRadius.lg}
-              padding="1px"
-              backgroundImage={radialGradient(
-                palette.gradients.borderLight.main,
-                palette.gradients.borderLight.state,
-                palette.gradients.borderLight.angle
-              )}
-            >
-              <VuiInput
-                type="email"
-                placeholder="Your email..."
-                sx={({ typography: { size } }) => ({
-                  fontSize: size.sm,
-                })}
-              />
-            </GradientBorder>
-          </VuiBox>
-          <VuiBox mb={2}>
-            <VuiBox mb={1} ml={0.5}>
-              <VuiTypography component="label" variant="button" color="white" fontWeight="medium">
-                Password
-              </VuiTypography>
-            </VuiBox>
-            <GradientBorder
-              minWidth="100%"
-              borderRadius={borders.borderRadius.lg}
-              padding="1px"
-              backgroundImage={radialGradient(
-                palette.gradients.borderLight.main,
-                palette.gradients.borderLight.state,
-                palette.gradients.borderLight.angle
-              )}
-            >
-              <VuiInput
-                type="password"
-                placeholder="Your password..."
-                sx={({ typography: { size } }) => ({
-                  fontSize: size.sm,
-                })}
-              />
-            </GradientBorder>
-          </VuiBox>
+  {/* Name */}
+  <VuiBox mb={1}>
+    <VuiTypography component="label" variant="button" color="white" fontWeight="medium">
+      Name
+    </VuiTypography>
+    <VuiBox display="flex">
+      <GradientBorder
+        minWidth="48%"
+        borderRadius={borders.borderRadius.lg}
+        padding="1px"
+        backgroundImage={radialGradient(
+          palette.gradients.borderLight.main,
+          palette.gradients.borderLight.state,
+          palette.gradients.borderLight.angle
+        )}
+      >
+        <VuiInput
+          placeholder="First Name"
+          sx={({ typography: { size } }) => ({
+            fontSize: size.sm,
+          })}
+        />
+      </GradientBorder>
+      <VuiBox mx={1} />
+      <GradientBorder
+        minWidth="48%"
+        borderRadius={borders.borderRadius.lg}
+        padding="1px"
+        backgroundImage={radialGradient(
+          palette.gradients.borderLight.main,
+          palette.gradients.borderLight.state,
+          palette.gradients.borderLight.angle
+        )}
+      >
+        <VuiInput
+          placeholder="Last Name"
+          sx={({ typography: { size } }) => ({
+            fontSize: size.sm,
+          })}
+        />
+      </GradientBorder>
+    </VuiBox>
+  </VuiBox>
+
+  {/* Email */}
+  <VuiBox mb={1}>
+    <VuiTypography component="label" variant="button" color="white" fontWeight="medium">
+      Email
+    </VuiTypography>
+    <GradientBorder
+      minWidth="100%"
+      borderRadius={borders.borderRadius.lg}
+      padding="1px"
+      backgroundImage={radialGradient(
+        palette.gradients.borderLight.main,
+        palette.gradients.borderLight.state,
+        palette.gradients.borderLight.angle
+      )}
+    >
+      <VuiInput
+        type="email"
+        placeholder="Your email..."
+        sx={({ typography: { size } }) => ({
+          fontSize: size.sm,
+        })}
+      />
+    </GradientBorder>
+  </VuiBox>
+
+  {/* Age */}
+  <VuiBox mb={1}>
+    <VuiTypography component="label" variant="button" color="white" fontWeight="medium">
+      Age (optional)
+    </VuiTypography>
+    <GradientBorder
+      minWidth="100%"
+      borderRadius={borders.borderRadius.lg}
+      padding="1px"
+      backgroundImage={radialGradient(
+        palette.gradients.borderLight.main,
+        palette.gradients.borderLight.state,
+        palette.gradients.borderLight.angle
+      )}
+    >
+      <VuiInput
+        type="number"
+        placeholder="Your age..."
+        sx={({ typography: { size } }) => ({
+          fontSize: size.sm,
+        })}
+      />
+    </GradientBorder>
+  </VuiBox>
+
+  {/* Gender */}
+  <VuiBox mb={1}>
+    <VuiTypography component="label" variant="button" color="white" fontWeight="medium">
+      Gender (optional)
+    </VuiTypography>
+    <GradientBorder
+      minWidth="100%"
+      borderRadius={borders.borderRadius.lg}
+      padding="1px"
+      backgroundImage={radialGradient(
+        palette.gradients.borderLight.main,
+        palette.gradients.borderLight.state,
+        palette.gradients.borderLight.angle
+      )}
+    >
+      <VuiInput
+        placeholder="Your gender..."
+        sx={({ typography: { size } }) => ({
+          fontSize: size.sm,
+        })}
+      />
+    </GradientBorder>
+  </VuiBox>
+
+  {/* Occupation */}
+  <VuiBox mb={1}>
+    <VuiTypography component="label" variant="button" color="white" fontWeight="medium">
+      Occupation (optional)
+    </VuiTypography>
+    <GradientBorder
+      minWidth="100%"
+      borderRadius={borders.borderRadius.lg}
+      padding="1px"
+      backgroundImage={radialGradient(
+        palette.gradients.borderLight.main,
+        palette.gradients.borderLight.state,
+        palette.gradients.borderLight.angle
+      )}
+    >
+      <VuiInput
+        placeholder="Your occupation..."
+        sx={({ typography: { size } }) => ({
+          fontSize: size.sm,
+        })}
+      />
+    </GradientBorder>
+  </VuiBox>
+
+  {/* Phone Number */}
+  <VuiBox mb={1}>
+    <VuiTypography component="label" variant="button" color="white" fontWeight="medium">
+      Phone Number
+    </VuiTypography>
+    <GradientBorder
+      minWidth="100%"
+      borderRadius={borders.borderRadius.lg}
+      padding="1px"
+      backgroundImage={radialGradient(
+        palette.gradients.borderLight.main,
+        palette.gradients.borderLight.state,
+        palette.gradients.borderLight.angle
+      )}
+    >
+      <VuiInput
+        type="tel"
+        placeholder="Your phone number..."
+        sx={({ typography: { size } }) => ({
+          fontSize: size.sm,
+        })}
+      />
+    </GradientBorder>
+  </VuiBox>
+
+  {/* Password */}
+  <VuiBox mb={1}>
+    <VuiTypography component="label" variant="button" color="white" fontWeight="medium">
+      Password
+    </VuiTypography>
+    <GradientBorder
+      minWidth="100%"
+      borderRadius={borders.borderRadius.lg}
+      padding="1px"
+      backgroundImage={radialGradient(
+        palette.gradients.borderLight.main,
+        palette.gradients.borderLight.state,
+        palette.gradients.borderLight.angle
+      )}
+    >
+      <VuiInput
+        type="password"
+        placeholder="Your password..."
+        sx={({ typography: { size } }) => ({
+          fontSize: size.sm,
+        })}
+      />
+    </GradientBorder>
+  </VuiBox>
+
+  {/* Profile Picture */}
+  <VuiBox mb={1}>
+    <VuiTypography component="label" variant="button" color="white" fontWeight="medium">
+      Profile Picture (optional)
+    </VuiTypography>
+    <GradientBorder
+      minWidth="100%"
+      borderRadius={borders.borderRadius.lg}
+      padding="1px"
+      backgroundImage={radialGradient(
+        palette.gradients.borderLight.main,
+        palette.gradients.borderLight.state,
+        palette.gradients.borderLight.angle
+      )}
+    >
+      <VuiInput
+        type="file"
+        placeholder="Upload your profile picture..."
+        sx={({ typography: { size } }) => ({
+          fontSize: size.sm,
+        })}
+      />
+    </GradientBorder>
+  </VuiBox>
+
+  {/* Location */}
+  <VuiBox mb={1}>
+    <VuiTypography component="label" variant="button" color="white" fontWeight="medium">
+      Location (City, Country)
+    </VuiTypography>
+    <GradientBorder
+      minWidth="100%"
+      borderRadius={borders.borderRadius.lg}
+      padding="1px"
+      backgroundImage={radialGradient(
+        palette.gradients.borderLight.main,
+        palette.gradients.borderLight.state,
+        palette.gradients.borderLight.angle
+      )}
+    >
+      <VuiInput
+        placeholder="City, Country"
+        sx={({ typography: { size } }) => ({
+          fontSize: size.sm,
+        })}
+      />
+    </GradientBorder>
+  </VuiBox>
+
+  {/* Interests */}
+  <VuiBox mb={1}>
+    <VuiTypography component="label" variant="button" color="white" fontWeight="medium">
+      Interests
+    </VuiTypography>
+    <GradientBorder
+      minWidth="100%"
+      borderRadius={borders.borderRadius.lg}
+      padding="1px"
+      backgroundImage={radialGradient(
+        palette.gradients.borderLight.main,
+        palette.gradients.borderLight.state,
+        palette.gradients.borderLight.angle
+      )}
+    >
+      <VuiInput
+        placeholder="Your interests (e.g., environmental, education)..."
+        sx={({ typography: { size } }) => ({
+          fontSize: size.sm,
+        })}
+      />
+    </GradientBorder>
+  </VuiBox>
+
+  {/* Availability */}
+  <VuiBox mb={1}>
+    <VuiTypography component="label" variant="button" color="white" fontWeight="medium">
+      Availability
+    </VuiTypography>
+    <GradientBorder
+      minWidth="100%"
+      borderRadius={borders.borderRadius.lg}
+      padding="1px"
+      backgroundImage={radialGradient(
+        palette.gradients.borderLight.main,
+        palette.gradients.borderLight.state,
+        palette.gradients.borderLight.angle
+      )}
+    >
+      <VuiInput
+        placeholder="Available on weekdays/weekends..."
+        sx={({ typography: { size } }) => ({
+          fontSize: size.sm,
+        })}
+      />
+    </GradientBorder>
+  </VuiBox>
+
+  {/* Skills */}
+  <VuiBox mb={1}>
+    <VuiTypography component="label" variant="button" color="white" fontWeight="medium">
+      Skills
+    </VuiTypography>
+    <GradientBorder
+      minWidth="100%"
+      borderRadius={borders.borderRadius.lg}
+      padding="1px"
+      backgroundImage={radialGradient(
+        palette.gradients.borderLight.main,
+        palette.gradients.borderLight.state,
+        palette.gradients.borderLight.angle
+      )}
+    >
+      <VuiInput
+        placeholder="Your skills (e.g., first aid, teaching)..."
+        sx={({ typography: { size } }) => ({
+          fontSize: size.sm,
+        })}
+      />
+    </GradientBorder>
+  </VuiBox>
+
+  {/* Profile URLs */}
+  <VuiBox mb={1}>
+    <VuiTypography component="label" variant="button" color="white" fontWeight="medium">
+      Profile URLs
+    </VuiTypography>
+    <GradientBorder
+      minWidth="100%"
+      borderRadius={borders.borderRadius.lg}
+      padding="1px"
+      backgroundImage={radialGradient(
+        palette.gradients.borderLight.main,
+        palette.gradients.borderLight.state,
+        palette.gradients.borderLight.angle
+      )}
+    >
+      <VuiInput
+        placeholder="LinkedIn, GitHub, etc..."
+        sx={({ typography: { size } }) => ({
+          fontSize: size.sm,
+        })}
+      />
+    </GradientBorder>
+  </VuiBox>
+
+  {/* Short Bio/Description */}
+  <VuiBox mb={1}>
+    <VuiTypography component="label" variant="button" color="white" fontWeight="medium">
+      Short Bio/Description
+    </VuiTypography>
+    <GradientBorder
+      minWidth="100%"
+      borderRadius={borders.borderRadius.lg}
+      padding="1px"
+      backgroundImage={radialGradient(
+        palette.gradients.borderLight.main,
+        palette.gradients.borderLight.state,
+        palette.gradients.borderLight.angle
+      )}
+    >
+      <VuiInput
+        placeholder="Why do you want to volunteer? Your experience..."
+        sx={({ typography: { size } }) => ({
+          fontSize: size.sm,
+        })}
+      />
+    </GradientBorder>
+  </VuiBox>
+
+  {/* Past Volunteer Experience */}
+  <VuiBox mb={1}>
+    <VuiTypography component="label" variant="button" color="white" fontWeight="medium">
+      Past Volunteer Experience (optional)
+    </VuiTypography>
+    <GradientBorder
+      minWidth="100%"
+      borderRadius={borders.borderRadius.lg}
+      padding="1px"
+      backgroundImage={radialGradient(
+        palette.gradients.borderLight.main,
+        palette.gradients.borderLight.state,
+        palette.gradients.borderLight.angle
+      )}
+    >
+      <VuiInput
+        placeholder="Details about past volunteer experiences..."
+        sx={({ typography: { size } }) => ({
+          fontSize: size.sm,
+        })}
+      />
+    </GradientBorder>
+  </VuiBox>
+
+  {/* Preferred Volunteer Locations */}
+  <VuiBox mb={1}>
+    <VuiTypography component="label" variant="button" color="white" fontWeight="medium">
+      Preferred Volunteer Locations
+    </VuiTypography>
+    <GradientBorder
+      minWidth="100%"
+      borderRadius={borders.borderRadius.lg}
+      padding="1px"
+      backgroundImage={radialGradient(
+        palette.gradients.borderLight.main,
+        palette.gradients.borderLight.state,
+        palette.gradients.borderLight.angle
+      )}
+    >
+      <VuiInput
+        placeholder="Willing to travel or only local?"
+        sx={({ typography: { size } }) => ({
+          fontSize: size.sm,
+        })}
+      />
+    </GradientBorder>
+  </VuiBox>
+
+  {/* Languages Spoken */}
+  <VuiBox mb={1}>
+    <VuiTypography component="label" variant="button" color="white" fontWeight="medium">
+      Languages Spoken
+    </VuiTypography>
+    <GradientBorder
+      minWidth="100%"
+      borderRadius={borders.borderRadius.lg}
+      padding="1px"
+      backgroundImage={radialGradient(
+        palette.gradients.borderLight.main,
+        palette.gradients.borderLight.state,
+        palette.gradients.borderLight.angle
+      )}
+    >
+      <VuiInput
+        placeholder="Languages you speak..."
+        sx={({ typography: { size } }) => ({
+          fontSize: size.sm,
+        })}
+      />
+    </GradientBorder>
+  </VuiBox>
+
+  {/* Time Zone */}
+  <VuiBox mb={1}>
+    <VuiTypography component="label" variant="button" color="white" fontWeight="medium">
+      Time Zone
+    </VuiTypography>
+    <GradientBorder
+      minWidth="100%"
+      borderRadius={borders.borderRadius.lg}
+      padding="1px"
+      backgroundImage={radialGradient(
+        palette.gradients.borderLight.main,
+        palette.gradients.borderLight.state,
+        palette.gradients.borderLight.angle
+      )}
+    >
+      <VuiInput
+        placeholder="Your time zone..."
+        sx={({ typography: { size } }) => ({
+          fontSize: size.sm,
+        })}
+      />
+    </GradientBorder>
+  </VuiBox>
+
+  {/* Account Creation Date (hidden or auto-filled) */}
+  <VuiBox mb={1} display="none">
+    <VuiTypography component="label" variant="button" color="white" fontWeight="medium">
+      Account Creation Date
+    </VuiTypography>
+    <GradientBorder
+      minWidth="100%"
+      borderRadius={borders.borderRadius.lg}
+      padding="1px"
+      backgroundImage={radialGradient(
+        palette.gradients.borderLight.main,
+        palette.gradients.borderLight.state,
+        palette.gradients.borderLight.angle
+      )}
+    >
+      <VuiInput
+        type="text"
+        value={new Date().toISOString().split('T')[0]} // Example format
+        readOnly
+        sx={({ typography: { size } }) => ({
+          fontSize: size.sm,
+        })}
+      />
+    </GradientBorder>
+  </VuiBox>
+</VuiBox>
+
           <VuiBox display="flex" alignItems="center">
             <VuiSwitch color="info" checked={rememberMe} onChange={handleSetRememberMe} />
             <VuiTypography
