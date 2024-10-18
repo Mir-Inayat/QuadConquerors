@@ -48,6 +48,7 @@ import SignIn from "layouts/authentication/sign-in";
 import SignUp from "layouts/authentication/sign-up";
 import VolunteerSignIn from "layouts/authentication/sign-in/VolunteerSignIn"
 import VolunteerSignUp from "layouts/authentication/sign-up/VolunteerSignUp"
+import LandingPage from "layouts/landingpage";
 
 // Vision UI Dashboard React icons
 import { IoRocketSharp } from "react-icons/io5";
@@ -164,6 +165,16 @@ const routes = [
     component: OrganizationSignUp,
     noCollapse: true,
     isHidden: true // Add this flag
+  },
+  {
+    type :"collapse",
+    name: "Landing Page",
+    key: "Landing-page",
+    route: "/landingpage",
+    icon: <IoRocketSharp size="15px" color="inherit" />,
+    component: LandingPage,
+    noCollapse: true,
+    isHidden: true
   }
   
 ];
