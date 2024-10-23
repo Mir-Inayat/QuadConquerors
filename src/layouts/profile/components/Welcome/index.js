@@ -14,6 +14,7 @@ import { IoBuild } from "react-icons/io5";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import { useEffect, useState } from "react";
 
+// Assuming you have a context or state management to hold user data
 function Header() {
   const [tabsOrientation, setTabsOrientation] = useState("horizontal");
   const [tabValue, setTabValue] = useState(0);
@@ -33,16 +34,16 @@ function Header() {
 
   const handleSetTabValue = (event, newValue) => setTabValue(newValue);
 
-  // Example user data (replace with actual state or props where necessary)
+  // Replace these variables with the actual state/props values where the user data is stored
   const userData = {
-    fullName: "Your User Name", // Replace with the variable holding the user's name
-    email: "mark@simmmple.com",
-    phone: "123-456-7890",
-    skills: "JavaScript, React",
-    availability: "Weekends",
-    preferences: "Community Service",
-    socialMedia: "LinkedIn, Twitter",
-    profileURL: "https://example.com/mark-johnson"
+    fullName: "Actual User Name", // Replace this with the dynamic variable for user's name
+    email: "actual.email@example.com", // Replace with dynamic email
+    phone: "987-654-3210", // Replace with dynamic phone number
+    skills: "Python, Django", // Replace with dynamic skills
+    availability: "Weekdays", // Replace with dynamic availability
+    preferences: "Remote Work", // Replace with dynamic preferences
+    socialMedia: "Facebook, Instagram", // Replace with dynamic social media links
+    profileURL: "https://example.com/user-profile" // Replace with dynamic profile URL
   };
 
   return (
@@ -154,4 +155,5 @@ function Header() {
 }
 
 export default Header;
+
 
