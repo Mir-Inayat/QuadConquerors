@@ -1,22 +1,38 @@
 import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
 import burceMars from "assets/images/avatar-simmmple.png";
+import breakpoints from "assets/theme/base/breakpoints";
 import VuiAvatar from "components/VuiAvatar";
 import VuiBox from "components/VuiBox";
 import VuiTypography from "components/VuiTypography";
+import { useEffect, useState } from "react";
 
 function Header() {
-  // Assuming you are using the same state management to hold user data
-  const userData = {
-    fullName: formData.fullName, // Dynamic variable for full name
-    email: formData.email,        // Dynamic variable for email
-    phone: formData.phone,        // Dynamic variable for phone
-    skills: formData.skills,      // Dynamic variable for skills
-    availability: formData.availability, // Dynamic variable for availability
-    preferences: formData.preferences,     // Dynamic variable for preferences
-    socialMedia: formData.socialMedia,     // Dynamic variable for social media
-    profileURL: formData.profileURL        // Dynamic variable for profile URL
-  };
+  const [userData, setUserData] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    skills: "",
+    availability: "",
+    preferences: "",
+    socialMedia: "",
+    profileURL: "",
+  });
+
+  useEffect(() => {
+    // Retrieve user data from local storage
+    const storedUserData = {
+      fullName: localStorage.getItem("fullName"),
+      email: localStorage.getItem("email"),
+      phone: localStorage.getItem("phone"),
+      skills: localStorage.getItem("skills"),
+      availability: localStorage.getItem("availability"),
+      preferences: localStorage.getItem("preferences"),
+      socialMedia: localStorage.getItem("socialMedia"),
+      profileURL: localStorage.getItem("profileURL"),
+    };
+    setUserData(storedUserData);
+  }, []);
 
   return (
     <VuiBox position="relative">
@@ -30,6 +46,17 @@ function Header() {
           container
           alignItems="center"
           justifyContent="center"
+          sx={({ breakpoints }) => ({
+            [breakpoints.up("xs")]: {
+              gap: "16px",
+            },
+            [breakpoints.up("xs")]: {
+              gap: "0px",
+            },
+            [breakpoints.up("xl")]: {
+              gap: "0px",
+            },
+          })}
         >
           <Grid
             item
@@ -39,6 +66,12 @@ function Header() {
             xl={1.2}
             xxl={0.8}
             display="flex"
+            sx={({ breakpoints }) => ({
+              [breakpoints.only("sm")]: {
+                justifyContent: "center",
+                alignItems: "center",
+              },
+            })}
           >
             <VuiAvatar
               src={burceMars}
@@ -55,6 +88,12 @@ function Header() {
               lineHeight={1}
               display="flex"
               flexDirection="column"
+              sx={({ breakpoints }) => ({
+                [breakpoints.only("sm")]: {
+                  justifyContent: "center",
+                  alignItems: "center",
+                },
+              })}
             >
               <VuiTypography variant="lg" color="white" fontWeight="bold">
                 Nice to see you, {userData.fullName}!
