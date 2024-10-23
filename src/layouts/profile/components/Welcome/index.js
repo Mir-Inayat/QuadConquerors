@@ -1,81 +1,156 @@
-/*!
+import AppBar from "@mui/material/AppBar";
+import Card from "@mui/material/Card";
+import Grid from "@mui/material/Grid";
+import Tab from "@mui/material/Tab";
+import Tabs from "@mui/material/Tabs";
+import burceMars from "assets/images/avatar-simmmple.png";
+import breakpoints from "assets/theme/base/breakpoints";
+import VuiAvatar from "components/VuiAvatar";
+import VuiBox from "components/VuiBox";
+import VuiTypography from "components/VuiTypography";
+import { IoCube } from "react-icons/io5";
+import { IoDocument } from "react-icons/io5";
+import { IoBuild } from "react-icons/io5";
+import DashboardNavbar from "examples/Navbars/DashboardNavbar";
+import { useEffect, useState } from "react";
 
-=========================================================
-* Vision UI Free React - v1.0.0
-=========================================================
+function Header() {
+  const [tabsOrientation, setTabsOrientation] = useState("horizontal");
+  const [tabValue, setTabValue] = useState(0);
 
-* Product Page: https://www.creative-tim.com/product/vision-ui-free-react
-* Copyright 2021 Creative Tim (https://www.creative-tim.com/)
-* Licensed under MIT (https://github.com/creativetimofficial/vision-ui-free-react/blob/master LICENSE.md)
+  useEffect(() => {
+    function handleTabsOrientation() {
+      return window.innerWidth < breakpoints.values.lg
+        ? setTabsOrientation("vertical")
+        : setTabsOrientation("horizontal");
+    }
 
-* Design and Coded by Simmmple & Creative Tim
+    window.addEventListener("resize", handleTabsOrientation);
+    handleTabsOrientation();
 
-=========================================================
+    return () => window.removeEventListener("resize", handleTabsOrientation);
+  }, [tabsOrientation]);
 
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+  const handleSetTabValue = (event, newValue) => setTabValue(newValue);
 
-*/
+  // Example user data (replace with actual state or props where necessary)
+  const userData = {
+    fullName: "Mark Johnson",
+    email: "mark@simmmple.com",
+    phone: "123-456-7890",
+    skills: "JavaScript, React",
+    availability: "Weekends",
+    preferences: "Community Service",
+    socialMedia: "LinkedIn, Twitter",
+    profileURL: "https://example.com/mark-johnson"
+  };
 
-import React from "react";
-import { Card, Icon } from "@mui/material";
-import welcome from "assets/images/welcome-profile.png";
-import VuiTypography from "components/VuiTypography/index";
-import VuiBox from "components/VuiBox/index";
-
-const Welcome = () => {
   return (
-    <Card
-      sx={({ breakpoints }) => ({
-        background: `url(${welcome})`,
-        backgroundSize: "cover",
-        borderRadius: "20px",
-        height: "100%",
-        [breakpoints.only("xl")]: {
-          gridArea: "1 / 1 / 2 / 2",
-        },
-      })}
-    >
-      <VuiBox display="flex" flexDirection="column" sx={{ height: "100%" }}>
-        <VuiBox display="flex" flexDirection="column" mb="auto">
-          <VuiTypography color="white" variant="h3" fontWeight="bold" mb="3px">
-            Welcome back!
-          </VuiTypography>
-          <VuiTypography color="white" variant="button" fontWeight="regular">
-            Nice to see you, Mark Johnson!
-          </VuiTypography>
-        </VuiBox>
-        <VuiBox justifySelf="flex-end">
-          <VuiTypography
-            component="a"
-            href="#"
-            variant="button"
-            color="white"
-            fontWeight="regular"
-            sx={{
-              mr: "5px",
-              display: "inline-flex",
-              alignItems: "center",
-              justifySelf: "flex-end",
-              cursor: "pointer",
-
-              "& .material-icons-round": {
-                fontSize: "1.125rem",
-                transform: `translate(2px, -0.5px)`,
-                transition: "transform 0.2s cubic-bezier(0.34,1.61,0.7,1.3)",
+    <VuiBox position="relative">
+      <DashboardNavbar light />
+      <Card
+        sx={{
+          px: 3,
+          mt: 2,
+        }}
+      >
+        <Grid
+          container
+          alignItems="center"
+          justifyContent="center"
+          sx={({ breakpoints }) => ({
+            [breakpoints.up("xs")]: {
+              gap: "16px",
+            },
+            [breakpoints.up("xs")]: {
+              gap: "0px",
+            },
+            [breakpoints.up("xl")]: {
+              gap: "0px",
+            },
+          })}
+        >
+          <Grid
+            item
+            xs={12}
+            md={1.7}
+            lg={1.5}
+            xl={1.2}
+            xxl={0.8}
+            display="flex"
+            sx={({ breakpoints }) => ({
+              [breakpoints.only("sm")]: {
+                justifyContent: "center",
+                alignItems: "center",
               },
-
-              "&:hover .material-icons-round, &:focus  .material-icons-round": {
-                transform: `translate(6px, -0.5px)`,
-              },
-            }}
+            })}
           >
-            Tap to record
-            <Icon sx={{ fontWeight: "bold", ml: "5px" }}>arrow_forward</Icon>
-          </VuiTypography>
-        </VuiBox>
-      </VuiBox>
-    </Card>
+            <VuiAvatar
+              src={burceMars}
+              alt="profile-image"
+              variant="rounded"
+              size="xl"
+              shadow="sm"
+            />
+          </Grid>
+          <Grid item xs={12} md={4.3} lg={4} xl={3.8} xxl={7}>
+            <VuiBox
+              height="100%"
+              mt={0.5}
+              lineHeight={1}
+              display="flex"
+              flexDirection="column"
+              sx={({ breakpoints }) => ({
+                [breakpoints.only("sm")]: {
+                  justifyContent: "center",
+                  alignItems: "center",
+                },
+              })}
+            >
+              <VuiTypography variant="lg" color="white" fontWeight="bold">
+                Nice to see you, {userData.fullName}!
+              </VuiTypography>
+              <VuiTypography variant="button" color="text" fontWeight="regular">
+                {userData.email}
+              </VuiTypography>
+              <VuiTypography variant="button" color="text" fontWeight="regular">
+                Skills: {userData.skills}
+              </VuiTypography>
+              <VuiTypography variant="button" color="text" fontWeight="regular">
+                Phone: {userData.phone}
+              </VuiTypography>
+              <VuiTypography variant="button" color="text" fontWeight="regular">
+                Availability: {userData.availability}
+              </VuiTypography>
+              <VuiTypography variant="button" color="text" fontWeight="regular">
+                Preferences: {userData.preferences}
+              </VuiTypography>
+              <VuiTypography variant="button" color="text" fontWeight="regular">
+                Social Media Links: {userData.socialMedia}
+              </VuiTypography>
+              <VuiTypography variant="button" color="text" fontWeight="regular">
+                Profile URL: {userData.profileURL}
+              </VuiTypography>
+            </VuiBox>
+          </Grid>
+          <Grid item xs={12} md={6} lg={6.5} xl={6} xxl={4} sx={{ ml: "auto" }}>
+            <AppBar position="static">
+              <Tabs
+                orientation={tabsOrientation}
+                value={tabValue}
+                onChange={handleSetTabValue}
+                sx={{ background: "transparent", display: "flex", justifyContent: "flex-end" }}
+              >
+                <Tab label="OVERVIEW" icon={<IoCube color="white" size="16px" />} />
+                <Tab label="TEAMS" icon={<IoDocument color="white" size="16px" />} />
+                <Tab label="PROJECTS" icon={<IoBuild color="white" size="16px" />} />
+              </Tabs>
+            </AppBar>
+          </Grid>
+        </Grid>
+      </Card>
+    </VuiBox>
   );
-};
+}
 
-export default Welcome;
+export default Header;
