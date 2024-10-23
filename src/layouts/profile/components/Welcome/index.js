@@ -1,54 +1,25 @@
-import AppBar from "@mui/material/AppBar";
 import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
-import Tab from "@mui/material/Tab";
-import Tabs from "@mui/material/Tabs";
 import burceMars from "assets/images/avatar-simmmple.png";
-import breakpoints from "assets/theme/base/breakpoints";
 import VuiAvatar from "components/VuiAvatar";
 import VuiBox from "components/VuiBox";
 import VuiTypography from "components/VuiTypography";
-import { IoCube } from "react-icons/io5";
-import { IoDocument } from "react-icons/io5";
-import { IoBuild } from "react-icons/io5";
-import DashboardNavbar from "examples/Navbars/DashboardNavbar";
-import { useEffect, useState } from "react";
 
-// Assuming you have a context or state management to hold user data
 function Header() {
-  const [tabsOrientation, setTabsOrientation] = useState("horizontal");
-  const [tabValue, setTabValue] = useState(0);
-
-  useEffect(() => {
-    function handleTabsOrientation() {
-      return window.innerWidth < breakpoints.values.lg
-        ? setTabsOrientation("vertical")
-        : setTabsOrientation("horizontal");
-    }
-
-    window.addEventListener("resize", handleTabsOrientation);
-    handleTabsOrientation();
-
-    return () => window.removeEventListener("resize", handleTabsOrientation);
-  }, [tabsOrientation]);
-
-  const handleSetTabValue = (event, newValue) => setTabValue(newValue);
-
-  // Replace these variables with the actual state/props values where the user data is stored
+  // Assuming you are using the same state management to hold user data
   const userData = {
-    fullName: "Actual User Name", // Replace this with the dynamic variable for user's name
-    email: "actual.email@example.com", // Replace with dynamic email
-    phone: "987-654-3210", // Replace with dynamic phone number
-    skills: "Python, Django", // Replace with dynamic skills
-    availability: "Weekdays", // Replace with dynamic availability
-    preferences: "Remote Work", // Replace with dynamic preferences
-    socialMedia: "Facebook, Instagram", // Replace with dynamic social media links
-    profileURL: "https://example.com/user-profile" // Replace with dynamic profile URL
+    fullName: formData.fullName, // Dynamic variable for full name
+    email: formData.email,        // Dynamic variable for email
+    phone: formData.phone,        // Dynamic variable for phone
+    skills: formData.skills,      // Dynamic variable for skills
+    availability: formData.availability, // Dynamic variable for availability
+    preferences: formData.preferences,     // Dynamic variable for preferences
+    socialMedia: formData.socialMedia,     // Dynamic variable for social media
+    profileURL: formData.profileURL        // Dynamic variable for profile URL
   };
 
   return (
     <VuiBox position="relative">
-      <DashboardNavbar light />
       <Card
         sx={{
           px: 3,
@@ -59,17 +30,6 @@ function Header() {
           container
           alignItems="center"
           justifyContent="center"
-          sx={({ breakpoints }) => ({
-            [breakpoints.up("xs")]: {
-              gap: "16px",
-            },
-            [breakpoints.up("xs")]: {
-              gap: "0px",
-            },
-            [breakpoints.up("xl")]: {
-              gap: "0px",
-            },
-          })}
         >
           <Grid
             item
@@ -79,12 +39,6 @@ function Header() {
             xl={1.2}
             xxl={0.8}
             display="flex"
-            sx={({ breakpoints }) => ({
-              [breakpoints.only("sm")]: {
-                justifyContent: "center",
-                alignItems: "center",
-              },
-            })}
           >
             <VuiAvatar
               src={burceMars}
@@ -101,12 +55,6 @@ function Header() {
               lineHeight={1}
               display="flex"
               flexDirection="column"
-              sx={({ breakpoints }) => ({
-                [breakpoints.only("sm")]: {
-                  justifyContent: "center",
-                  alignItems: "center",
-                },
-              })}
             >
               <VuiTypography variant="lg" color="white" fontWeight="bold">
                 Nice to see you, {userData.fullName}!
@@ -134,20 +82,6 @@ function Header() {
               </VuiTypography>
             </VuiBox>
           </Grid>
-          <Grid item xs={12} md={6} lg={6.5} xl={6} xxl={4} sx={{ ml: "auto" }}>
-            <AppBar position="static">
-              <Tabs
-                orientation={tabsOrientation}
-                value={tabValue}
-                onChange={handleSetTabValue}
-                sx={{ background: "transparent", display: "flex", justifyContent: "flex-end" }}
-              >
-                <Tab label="OVERVIEW" icon={<IoCube color="white" size="16px" />} />
-                <Tab label="TEAMS" icon={<IoDocument color="white" size="16px" />} />
-                <Tab label="PROJECTS" icon={<IoBuild color="white" size="16px" />} />
-              </Tabs>
-            </AppBar>
-          </Grid>
         </Grid>
       </Card>
     </VuiBox>
@@ -155,5 +89,3 @@ function Header() {
 }
 
 export default Header;
-
-

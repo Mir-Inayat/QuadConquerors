@@ -1,25 +1,76 @@
+/*!
+
+=========================================================
+* Vision UI Free React - v1.0.0
+=========================================================
+
+* Product Page: https://www.creative-tim.com/product/vision-ui-free-react
+* Copyright 2021 Creative Tim (https://www.creative-tim.com/)
+* Licensed under MIT (https://github.com/creativetimofficial/vision-ui-free-react/blob/master/LICENSE.md)
+
+* Design and Coded by Simmmple & Creative Tim
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+*/
+
+import AppBar from "@mui/material/AppBar";
+// @mui material components
 import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
+import Tab from "@mui/material/Tab";
+import Tabs from "@mui/material/Tabs";
+// Images
 import burceMars from "assets/images/avatar-simmmple.png";
+// Vision UI Dashboard React base styles
+import breakpoints from "assets/theme/base/breakpoints";
 import VuiAvatar from "components/VuiAvatar";
+// Vision UI Dashboard React components
 import VuiBox from "components/VuiBox";
 import VuiTypography from "components/VuiTypography";
+// Vision UI Dashboard React icons
+import { IoCube } from "react-icons/io5";
+import { IoDocument } from "react-icons/io5";
+import { IoBuild } from "react-icons/io5";
+// Vision UI Dashboard React example components
+import DashboardNavbar from "examples/Navbars/DashboardNavbar";
+import { useEffect, useState } from "react";
 
 function Header() {
-  // Assuming you are using the same state management to hold user data
-  const userData = {
-    fullName: formData.fullName, // Dynamic variable for full name
-    email: formData.email,        // Dynamic variable for email
-    phone: formData.phone,        // Dynamic variable for phone
-    skills: formData.skills,      // Dynamic variable for skills
-    availability: formData.availability, // Dynamic variable for availability
-    preferences: formData.preferences,     // Dynamic variable for preferences
-    socialMedia: formData.socialMedia,     // Dynamic variable for social media
-    profileURL: formData.profileURL        // Dynamic variable for profile URL
-  };
+  const [tabsOrientation, setTabsOrientation] = useState("horizontal");
+  const [tabValue, setTabValue] = useState(0);
+
+  useEffect(() => {
+    // A function that sets the orientation state of the tabs.
+    function handleTabsOrientation() {
+      return window.innerWidth < breakpoints.values.lg
+        ? setTabsOrientation("vertical")
+        : setTabsOrientation("horizontal");
+    }
+
+    /** 
+     The event listener that's calling the handleTabsOrientation function when resizing the window.
+    */
+    window.addEventListener("resize", handleTabsOrientation);
+
+    // Call the handleTabsOrientation function to set the state with the initial value.
+    handleTabsOrientation();
+
+    // Remove event listener on cleanup
+    return () => window.removeEventListener("resize", handleTabsOrientation);
+  }, [tabsOrientation]);
+
+  const handleSetTabValue = (event, newValue) => setTabValue(newValue);
+
+  // Retrieve user's name and email from localStorage
+  const fullName = localStorage.getItem("fullName");
+  const email = localStorage.getItem("email");
 
   return (
     <VuiBox position="relative">
+      <DashboardNavbar light />
       <Card
         sx={{
           px: 3,
@@ -30,6 +81,17 @@ function Header() {
           container
           alignItems="center"
           justifyContent="center"
+          sx={({ breakpoints }) => ({
+            [breakpoints.up("xs")]: {
+              gap: "16px",
+            },
+            [breakpoints.up("xs")]: {
+              gap: "0px",
+            },
+            [breakpoints.up("xl")]: {
+              gap: "0px",
+            },
+          })}
         >
           <Grid
             item
@@ -39,6 +101,12 @@ function Header() {
             xl={1.2}
             xxl={0.8}
             display="flex"
+            sx={({ breakpoints }) => ({
+              [breakpoints.only("sm")]: {
+                justifyContent: "center",
+                alignItems: "center",
+              },
+            })}
           >
             <VuiAvatar
               src={burceMars}
@@ -55,32 +123,34 @@ function Header() {
               lineHeight={1}
               display="flex"
               flexDirection="column"
+              sx={({ breakpoints }) => ({
+                [breakpoints.only("sm")]: {
+                  justifyContent: "center",
+                  alignItems: "center",
+                },
+              })}
             >
               <VuiTypography variant="lg" color="white" fontWeight="bold">
-                Nice to see you, {userData.fullName}!
+                {fullName || "N/A"} {/* Default value if not found */}
               </VuiTypography>
               <VuiTypography variant="button" color="text" fontWeight="regular">
-                {userData.email}
-              </VuiTypography>
-              <VuiTypography variant="button" color="text" fontWeight="regular">
-                Skills: {userData.skills}
-              </VuiTypography>
-              <VuiTypography variant="button" color="text" fontWeight="regular">
-                Phone: {userData.phone}
-              </VuiTypography>
-              <VuiTypography variant="button" color="text" fontWeight="regular">
-                Availability: {userData.availability}
-              </VuiTypography>
-              <VuiTypography variant="button" color="text" fontWeight="regular">
-                Preferences: {userData.preferences}
-              </VuiTypography>
-              <VuiTypography variant="button" color="text" fontWeight="regular">
-                Social Media Links: {userData.socialMedia}
-              </VuiTypography>
-              <VuiTypography variant="button" color="text" fontWeight="regular">
-                Profile URL: {userData.profileURL}
+                {email || "N/A"} {/* Default value if not found */}
               </VuiTypography>
             </VuiBox>
+          </Grid>
+          <Grid item xs={12} md={6} lg={6.5} xl={6} xxl={4} sx={{ ml: "auto" }}>
+            <AppBar position="static">
+              <Tabs
+                orientation={tabsOrientation}
+                value={tabValue}
+                onChange={handleSetTabValue}
+                sx={{ background: "transparent", display: "flex", justifyContent: "flex-end" }}
+              >
+                <Tab label="OVERVIEW" icon={<IoCube color="white" size="16px" />} />
+                <Tab label="TEAMS" icon={<IoDocument color="white" size="16px" />} />
+                <Tab label="PROJECTS" icon={<IoBuild color="white" size="16px" />} />
+              </Tabs>
+            </AppBar>
           </Grid>
         </Grid>
       </Card>
@@ -89,5 +159,4 @@ function Header() {
 }
 
 export default Header;
-
 
