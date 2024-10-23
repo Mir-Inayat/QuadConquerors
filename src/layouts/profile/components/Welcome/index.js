@@ -35,7 +35,7 @@ function Header() {
 
   // Example user data (replace with actual state or props where necessary)
   const userData = {
-    fullName: "Mark Johnson",
+    fullName: "Your User Name", // Replace with the variable holding the user's name
     email: "mark@simmmple.com",
     phone: "123-456-7890",
     skills: "JavaScript, React",
@@ -154,3 +154,4 @@ function Header() {
 }
 
 export default Header;
+
