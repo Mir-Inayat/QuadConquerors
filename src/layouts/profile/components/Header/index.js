@@ -6,7 +6,7 @@
 
 * Product Page: https://www.creative-tim.com/product/vision-ui-free-react
 * Copyright 2021 Creative Tim (https://www.creative-tim.com/)
-* Licensed under MIT (https://github.com/creativetimofficial/vision-ui-free-react/blob/master LICENSE.md)
+* Licensed under MIT (https://github.com/creativetimofficial/vision-ui-free-react/blob/master/LICENSE.md)
 
 * Design and Coded by Simmmple & Creative Tim
 
@@ -63,6 +63,10 @@ function Header() {
   }, [tabsOrientation]);
 
   const handleSetTabValue = (event, newValue) => setTabValue(newValue);
+
+  // Retrieve user's name and email from localStorage
+  const fullName = localStorage.getItem("fullName");
+  const email = localStorage.getItem("email");
 
   return (
     <VuiBox position="relative">
@@ -127,10 +131,10 @@ function Header() {
               })}
             >
               <VuiTypography variant="lg" color="white" fontWeight="bold">
-                Mark Johnson
+                {fullName || "N/A"} {/* Default value if not found */}
               </VuiTypography>
               <VuiTypography variant="button" color="text" fontWeight="regular">
-                mark@simmmple.com
+                {email || "N/A"} {/* Default value if not found */}
               </VuiTypography>
             </VuiBox>
           </Grid>
@@ -155,3 +159,4 @@ function Header() {
 }
 
 export default Header;
+

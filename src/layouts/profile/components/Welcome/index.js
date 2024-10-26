@@ -1,81 +1,130 @@
-/*!
+import Card from "@mui/material/Card";
+import Grid from "@mui/material/Grid";
+import burceMars from "assets/images/avatar-simmmple.png";
+import breakpoints from "assets/theme/base/breakpoints";
+import VuiAvatar from "components/VuiAvatar";
+import VuiBox from "components/VuiBox";
+import VuiTypography from "components/VuiTypography";
+import { useEffect, useState } from "react";
 
-=========================================================
-* Vision UI Free React - v1.0.0
-=========================================================
+function Header() {
+  const [userData, setUserData] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    skills: "",
+    availability: "",
+    preferences: "",
+    socialMedia: "",
+    profileURL: "",
+  });
 
-* Product Page: https://www.creative-tim.com/product/vision-ui-free-react
-* Copyright 2021 Creative Tim (https://www.creative-tim.com/)
-* Licensed under MIT (https://github.com/creativetimofficial/vision-ui-free-react/blob/master LICENSE.md)
+  useEffect(() => {
+    // Retrieve user data from local storage
+    const storedUserData = {
+      fullName: localStorage.getItem("fullName"),
+      email: localStorage.getItem("email"),
+      phone: localStorage.getItem("phone"),
+      skills: localStorage.getItem("skills"),
+      availability: localStorage.getItem("availability"),
+      preferences: localStorage.getItem("preferences"),
+      socialMedia: localStorage.getItem("socialMedia"),
+      profileURL: localStorage.getItem("profileURL"),
+    };
+    setUserData(storedUserData);
+  }, []);
 
-* Design and Coded by Simmmple & Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
-
-import React from "react";
-import { Card, Icon } from "@mui/material";
-import welcome from "assets/images/welcome-profile.png";
-import VuiTypography from "components/VuiTypography/index";
-import VuiBox from "components/VuiBox/index";
-
-const Welcome = () => {
   return (
-    <Card
-      sx={({ breakpoints }) => ({
-        background: `url(${welcome})`,
-        backgroundSize: "cover",
-        borderRadius: "20px",
-        height: "100%",
-        [breakpoints.only("xl")]: {
-          gridArea: "1 / 1 / 2 / 2",
-        },
-      })}
-    >
-      <VuiBox display="flex" flexDirection="column" sx={{ height: "100%" }}>
-        <VuiBox display="flex" flexDirection="column" mb="auto">
-          <VuiTypography color="white" variant="h3" fontWeight="bold" mb="3px">
-            Welcome back!
-          </VuiTypography>
-          <VuiTypography color="white" variant="button" fontWeight="regular">
-            Nice to see you, Mark Johnson!
-          </VuiTypography>
-        </VuiBox>
-        <VuiBox justifySelf="flex-end">
-          <VuiTypography
-            component="a"
-            href="#"
-            variant="button"
-            color="white"
-            fontWeight="regular"
-            sx={{
-              mr: "5px",
-              display: "inline-flex",
-              alignItems: "center",
-              justifySelf: "flex-end",
-              cursor: "pointer",
-
-              "& .material-icons-round": {
-                fontSize: "1.125rem",
-                transform: `translate(2px, -0.5px)`,
-                transition: "transform 0.2s cubic-bezier(0.34,1.61,0.7,1.3)",
+    <VuiBox position="relative">
+      <Card
+        sx={{
+          px: 3,
+          mt: 2,
+        }}
+      >
+        <Grid
+          container
+          alignItems="center"
+          justifyContent="center"
+          sx={({ breakpoints }) => ({
+            [breakpoints.up("xs")]: {
+              gap: "16px",
+            },
+            [breakpoints.up("xs")]: {
+              gap: "0px",
+            },
+            [breakpoints.up("xl")]: {
+              gap: "0px",
+            },
+          })}
+        >
+          <Grid
+            item
+            xs={12}
+            md={1.7}
+            lg={1.5}
+            xl={1.2}
+            xxl={0.8}
+            display="flex"
+            sx={({ breakpoints }) => ({
+              [breakpoints.only("sm")]: {
+                justifyContent: "center",
+                alignItems: "center",
               },
-
-              "&:hover .material-icons-round, &:focus  .material-icons-round": {
-                transform: `translate(6px, -0.5px)`,
-              },
-            }}
+            })}
           >
-            Tap to record
-            <Icon sx={{ fontWeight: "bold", ml: "5px" }}>arrow_forward</Icon>
-          </VuiTypography>
-        </VuiBox>
-      </VuiBox>
-    </Card>
+            <VuiAvatar
+              src={burceMars}
+              alt="profile-image"
+              variant="rounded"
+              size="xl"
+              shadow="sm"
+            />
+          </Grid>
+          <Grid item xs={12} md={4.3} lg={4} xl={3.8} xxl={7}>
+            <VuiBox
+              height="100%"
+              mt={0.5}
+              lineHeight={1}
+              display="flex"
+              flexDirection="column"
+              sx={({ breakpoints }) => ({
+                [breakpoints.only("sm")]: {
+                  justifyContent: "center",
+                  alignItems: "center",
+                },
+              })}
+            >
+              <VuiTypography variant="lg" color="white" fontWeight="bold">
+                Nice to see you, {userData.fullName}!
+              </VuiTypography>
+              <VuiTypography variant="button" color="text" fontWeight="regular">
+                {userData.email}
+              </VuiTypography>
+              <VuiTypography variant="button" color="text" fontWeight="regular">
+                Skills: {userData.skills}
+              </VuiTypography>
+              <VuiTypography variant="button" color="text" fontWeight="regular">
+                Phone: {userData.phone}
+              </VuiTypography>
+              <VuiTypography variant="button" color="text" fontWeight="regular">
+                Availability: {userData.availability}
+              </VuiTypography>
+              <VuiTypography variant="button" color="text" fontWeight="regular">
+                Preferences: {userData.preferences}
+              </VuiTypography>
+              <VuiTypography variant="button" color="text" fontWeight="regular">
+                Social Media Links: {userData.socialMedia}
+              </VuiTypography>
+              <VuiTypography variant="button" color="text" fontWeight="regular">
+                Profile URL: {userData.profileURL}
+              </VuiTypography>
+            </VuiBox>
+          </Grid>
+        </Grid>
+      </Card>
+    </VuiBox>
   );
-};
+}
 
-export default Welcome;
+export default Header;
